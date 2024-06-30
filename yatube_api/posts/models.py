@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from rest_framework.validators import UniqueTogetherValidator
 
 MAX_LEN = 256
 
@@ -79,3 +80,13 @@ class Follow(models.Model):
         on_delete=models.CASCADE,
         verbose_name='Подписки пользователя'
     )
+
+    # Чтобы сделать вторым способом, нужно будет
+    # переопределить модель User?
+    class Meta:
+        constraints = (
+            models.UniqueConstraint(
+                fields=('user', 'following', ),
+                name='user_following_unique'
+            ),
+        )

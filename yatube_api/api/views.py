@@ -5,15 +5,15 @@ from rest_framework.permissions import (IsAuthenticated,
                                         IsAuthenticatedOrReadOnly)
 
 from posts.models import Group, Post
-from .viewsets import ListCreateView
-from .permissions import IsAuthor
+from .permissions import IsAdminOrReadOnly, IsAuthorOrReadOnly
 from .serializers import (CommentSerializer, FollowSerializer, GroupSerializer,
                           PostSerializer)
+from .viewsets import ListCreateView
 
 
 class PostViewSet(viewsets.ModelViewSet):
     """Вьюсет постов."""
-    permission_classes = (IsAuthenticatedOrReadOnly, IsAuthor)
+    permission_classes = (IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly)
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     pagination_class = LimitOffsetPagination
@@ -22,18 +22,16 @@ class PostViewSet(viewsets.ModelViewSet):
         serializer.save(author=self.request.user)
 
 
-# Не понял, зачем прописывать разрешение, если у меня вьюсет
-# не дает эндпойнтов для всех методов кроме получения.
 class GrouptViewSet(viewsets.ReadOnlyModelViewSet):
     """Вьюсет групп."""
-    permission_classes = (IsAuthenticatedOrReadOnly, )
+    permission_classes = (IsAdminOrReadOnly, )
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
 
 class CommentViewSet(viewsets.ModelViewSet):
     """Вьюсет комментариев."""
-    permission_classes = (IsAuthenticatedOrReadOnly, IsAuthor)
+    permission_classes = (IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly)
     serializer_class = CommentSerializer
 
     def get_queryset(self):

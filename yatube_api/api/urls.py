@@ -1,6 +1,5 @@
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
-from rest_framework_simplejwt.views import TokenVerifyView
 
 from .views import CommentViewSet, FollowViewSet, GrouptViewSet, PostViewSet
 
@@ -29,6 +28,5 @@ router_v1.register(
 
 urlpatterns = [
     path('v1/', include('djoser.urls.jwt')),
-    path('v1/jwt/verify', TokenVerifyView.as_view(), name='token_verify'),
     path('v1/', include(router_v1.urls)),
 ]
