@@ -75,3 +75,8 @@ There are some examples of requests:
         "access": "string"
         }
         ```
+
+## My contacts:
+
+- *email:* rvs@yandex.ru
+- *telegram:* underover_one
