@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
-from rest_framework.validators import UniqueTogetherValidator
+
 
 MAX_LEN = 256
 
