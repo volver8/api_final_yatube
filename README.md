@@ -40,20 +40,20 @@ There are some examples of requests:
         - Request samples
         ```
         {
-        "text": "string",
-        "image": "string",
-        "group": 0
+          "text": "string",
+          "image": "string",
+          "group": 0
         }
         ```
         - Response samples
         ```
         {
-        "id": 0,
-        "author": "string",
-        "text": "string",
-        "pub_date": "2019-08-24T14:15:22Z",
-        "image": "string",
-        "group": 0
+          "id": 0,
+          "author": "string",
+          "text": "string",
+          "pub_date": "2019-08-24T14:15:22Z",
+          "image": "string",
+          "group": 0
         }
         ```
        
@@ -64,15 +64,15 @@ There are some examples of requests:
         - Request samples
         ```
         {
-        "username": "string",
-        "password": "string"
+          "username": "string",
+          "password": "string"
         }
         ```
         - Response samples
         ```
         {
-        "refresh": "string",
-        "access": "string"
+          "refresh": "string",
+          "access": "string"
         }
         ```
 
