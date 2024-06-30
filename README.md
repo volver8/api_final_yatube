@@ -17,25 +17,62 @@ This API implements serialization and deserialization of data in models such as:
 There are some examples of requests:
   -  Model Post
 
-GET request: /api/v1/posts/
-'''
-{
-  "count": 123,
-  "next": "http://api.example.org/accounts/?offset=400&limit=100",
-  "previous": "http://api.example.org/accounts/?offset=200&limit=100",
-  "results": [
-    {
-      "id": 0,
-      "author": "string",
-      "text": "string",
-      "pub_date": "2021-10-14T20:41:29.648Z",
-      "image": "string",
-      "group": 0
-    }
-  ]
-}
-'''
+      - GET request: /api/v1/posts/
+          ```
+          {
+            "count": 123,
+            "next": "http://api.example.org/accounts/?offset=400&limit=100",
+            "previous": "http://api.example.org/accounts/?offset=200&limit=100",
+            "results": [
+              {
+                "id": 0,
+                "author": "string",
+                "text": "string",
+                "pub_date": "2021-10-14T20:41:29.648Z",
+                "image": "string",
+                "group": 0
+              }
+            ]
+          }
+          ```
+      - POST request: /api/v1/posts/
 
--
+        - Request samples
+        ```
+        {
+        "text": "string",
+        "image": "string",
+        "group": 0
+        }
+        ```
+        - Response samples
+        ```
+        {
+        "id": 0,
+        "author": "string",
+        "text": "string",
+        "pub_date": "2019-08-24T14:15:22Z",
+        "image": "string",
+        "group": 0
+        }
+        ```
+       
+  -  JWT token
 
+      - POST request: /api/v1/jwt/create/
 
+        - Request samples
+        ```
+        {
+        "username": "string",
+        "password": "string"
+        }
+        ```
+        - Response samples
+        ```
+        {
+        "refresh": "string",
+        "access": "string"
+        }
+        ```
+       
