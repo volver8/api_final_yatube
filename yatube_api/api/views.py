@@ -4,14 +4,10 @@ from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.permissions import (
     IsAuthenticated,
     IsAuthenticatedOrReadOnly,
-    DjangoModelPermissions,
-    DjangoModelPermissionsOrAnonReadOnly,
-    DjangoObjectPermissions,
-    IsAuthenticatedOrReadOnly
 )
 
 from posts.models import Group, Post
-from .permissions import IsAdminOrReadOnly, IsAuthorOrReadOnly
+from .permissions import IsAuthorOrReadOnly
 from .serializers import (CommentSerializer, FollowSerializer, GroupSerializer,
                           PostSerializer)
 from .viewsets import ListCreateView
