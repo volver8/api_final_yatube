@@ -1,6 +1,4 @@
 from rest_framework import permissions
-from rest_framework.exceptions import MethodNotAllowed
-
 
 class IsAuthorOrReadOnly(permissions.BasePermission):
     """Класс для проверки авторства."""
