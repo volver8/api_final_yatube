@@ -4,6 +4,7 @@ from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.permissions import (
     IsAuthenticated,
     IsAuthenticatedOrReadOnly,
+    AllowAny
 )
 
 from posts.models import Group, Post
@@ -26,7 +27,7 @@ class PostViewSet(viewsets.ModelViewSet):
 
 class GrouptViewSet(viewsets.ReadOnlyModelViewSet):
     """Вьюсет групп."""
-    permission_classes = (IsAuthenticatedOrReadOnly, )
+    permission_classes = (AllowAny, )
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
