@@ -1,20 +1,16 @@
-from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from rest_framework.relations import SlugRelatedField
 from rest_framework.serializers import CurrentUserDefault
 from rest_framework.validators import UniqueTogetherValidator, ValidationError
 
-from posts.models import Comment, Follow, Group, Post
-
-
-User = get_user_model()
+from posts.models import Comment, Follow, Group, Post, User
 
 
 class PostSerializer(serializers.ModelSerializer):
     author = SlugRelatedField(slug_field='username', read_only=True)
 
     class Meta:
-        fields = '__all__'
+        fields = ('id', 'text', 'author', 'image', 'group', 'pub_date', )
         model = Post
 
 
@@ -24,9 +20,9 @@ class CommentSerializer(serializers.ModelSerializer):
     )
 
     class Meta:
-        fields = ('__all__')
+        fields = ('id', 'author', 'post', 'text', 'created', )
         model = Comment
-        read_only_fields = ('author', 'post', )
+        read_only_fields = ('post', )
 
 
 class GroupSerializer(serializers.ModelSerializer):
@@ -53,7 +49,8 @@ class FollowSerializer(serializers.ModelSerializer):
         validators = [
             UniqueTogetherValidator(
                 queryset=Follow.objects.all(),
-                fields=('user', 'following', )
+                fields=('user', 'following', ),
+                message='Поле following пустое!'
             )
         ]
 
