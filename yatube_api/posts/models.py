@@ -68,5 +68,14 @@ class Comment(models.Model):
 
 
 class Follow(models.Model):
-    user = models.SlugField()
-    folowing = models.CharField(max_length=MAX_LEN)
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='follows',
+        verbose_name='Пользователь'
+    )
+    following = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        verbose_name='Подписки пользователя'
+    )
