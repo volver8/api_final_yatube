@@ -81,8 +81,6 @@ class Follow(models.Model):
         verbose_name='Подписки пользователя'
     )
 
-    # Чтобы сделать вторым способом, нужно будет
-    # переопределить модель User?
     class Meta:
         constraints = (
             models.UniqueConstraint(
